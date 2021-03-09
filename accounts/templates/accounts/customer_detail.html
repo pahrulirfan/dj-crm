@@ -1,0 +1,43 @@
+{% extends 'accounts/_main.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">Customer</div>
+                <div class="card-body">
+                    Name : {{ customer.name }} <br>
+                    Phone : {{ customer.phone }} <br>
+                    Email : {{ customer.email }} <br>
+                    Total Orders = {{ order_count }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Last Orders</div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th>Date Created</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td>{{ order.customer }}</td>
+                                <td>{{ order.product }}</td>
+                                <td>{{ order.status }}</td>
+                                <td>{{ order.created_at }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
